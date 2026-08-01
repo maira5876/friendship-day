@@ -1,1 +1,299 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: 'Fredoka', cursive, sans-serif;
+  background: linear-gradient(135deg, #0f0c20 0%, #1a103c 50%, #2a1b54 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  color: #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.star-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: floatUp 9s infinite ease-in-out;
+}
+
+.s1 { left: 10%; animation-delay: 0s; }
+.s2 { left: 30%; animation-delay: 2.5s; }
+.s3 { left: 55%; animation-delay: 4.5s; }
+.s4 { left: 75%; animation-delay: 1.5s; }
+.s5 { left: 90%; animation-delay: 3.5s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.8) rotate(0deg); opacity: 0; }
+  50% { opacity: 0.9; }
+  100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  background: rgba(26, 21, 51, 0.92);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 22px 18px;
+  max-width: 480px;
+  width: 100%;
+  min-height: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #f472b6;
+  width: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #f472b6;
+}
+
+.music-card {
+  background: rgba(124, 58, 237, 0.25);
+  border-radius: 18px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border: 1px solid rgba(192, 132, 252, 0.3);
+}
+
+.music-title {
+  font-size: 0.85rem;
+  color: #e9d5ff;
+  font-weight: 600;
+}
+
+.music-btn {
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.slides-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slide.active {
+  display: flex;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(30px) scale(0.95); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.kitty-hero {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.floating-kitty {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #f472b6;
+  animation: floatBounce 3s infinite ease-in-out;
+  box-shadow: 0 10px 20px rgba(244, 114, 182, 0.4);
+}
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.slide-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #f472b6;
+  margin-bottom: 15px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Sacramento', cursive;
+  font-size: 3.2rem;
+  color: #f3e8ff;
+  margin-top: 5px;
+  line-height: 1.1;
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.6);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #c084fc;
+}
+
+.highlight {
+  color: #f472b6;
+  font-weight: 700;
+}
+
+.cat-stage {
+  text-align: center;
+  width: 100%;
+}
+
+.cat-frame {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid #a855f7;
+  background: #0f172a;
+}
+
+.cat-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.cat-caption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #f0abfc;
+  font-weight: 600;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.nav-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+}
+
+.prev-btn {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  color: #c084fc;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  font-size: 1.15rem;
+  color: #f3e8ff;
+}
+
+.funny-card { border-left: 4px solid #f472b6; }
+.funny-card p { line-height: 1.5; color: #fbcfe8; font-size: 0.92rem; margin-bottom: 8px; }
+.funny-card .quote { font-style: italic; color: #f472b6; font-weight: 600; }
+
+.quiz-card { border-left: 4px solid #c084fc; }
+.q-block { margin-top: 8px; padding-top: 6px; border-top: 1px dashed rgba(255, 255, 255, 0.15); }
+.question { font-size: 0.85rem; font-weight: 600; color: #e2e8f0; margin-bottom: 6px; }
+.q-btns { display: flex; gap: 8px; }
+
+.btn-opt {
+  flex: 1;
+  background: rgba(30, 27, 75, 0.8);
+  color: #c084fc;
+  border: 1px solid #c084fc;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.q-res { margin-top: 4px; font-size: 0.82rem; font-weight: 600; color: #f472b6; }
+
+.emotional-card { border-left: 4px solid #fbbf24; }
+.emotional-card p { line-height: 1.5; color: #fef3c7; font-size: 0.88rem; margin-bottom: 8px; }
+.emotional-card .sign { font-family: 'Sacramento', cursive; font-size: 1.8rem; color: #fbbf24; margin-top: 10px; }
