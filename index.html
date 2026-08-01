@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Friendship Day Elisha! 🌙✨</title>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body onclick="enableAutoplayOnce()">
+
+  <!-- Background Stars -->
+  <div class="star-field">
+    <div class="star s1">✨</div>
+    <div class="star s2">🌟</div>
+    <div class="star s3">🌙</div>
+    <div class="star s4">✨</div>
+    <div class="star s5">💜</div>
+  </div>
+
+  <div class="container">
+
+    <!-- Progress Dots -->
+    <div class="progress-dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+      <span class="dot" onclick="goToSlide(4)"></span>
+    </div>
+
+    <!-- Music Player Header -->
+    <div class="music-card">
+      <span class="music-title">🎵 Yuu - Whistling</span>
+      <button class="music-btn" id="musicBtn" onclick="toggleMusic(event)">▶️ Tap to Play</button>
+      
+      <!-- Audio Element with direct stream -->
+      <audio id="bgMusic" loop preload="auto">
+        <source src="https://archive.org/download/yuu-whistling/yuu-whistling.mp3" type="audio/mpeg">
+        <source src="https://ia801503.us.archive.org/15/items/yuu-whistling/yuu-whistling.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <!-- SLIDES WRAPPER -->
+    <div class="slides-wrapper">
+
+      <!-- SLIDE 1 -->
+      <div class="slide active">
+        <div class="header">
+          <h1>Happy Friendship Day!</h1>
+          <p class="subtitle">For the one and only <span class="highlight">Elisha</span> 🌸</p>
+        </div>
+
+        <div class="kitty-hero">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&auto=format&fit=crop&q=80" alt="Cute Cat" class="floating-kitty">
+        </div>
+
+        <p class="slide-hint">Tap anywhere on screen to play music! 🎶</p>
+        <button class="nav-btn next-btn" onclick="nextSlide()">Start Experience ➔</button>
+      </div>
+
+      <!-- SLIDE 2: Interactive Cat Reaction Stage -->
+      <div class="slide">
+        <div class="cat-stage">
+          <div class="cat-frame">
+            <img id="catImg" src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&auto=format&fit=crop&q=80" alt="Cozy Cat">
+          </div>
+          <p class="cat-caption" id="catCaption">"Soothing night vibes with Elisha..." 🐾🕯️</p>
+        </div>
+
+        <div class="nav-controls">
+          <button class="nav-btn prev-btn" onclick="prevSlide()">⬅ Back</button>
+          <button class="nav-btn next-btn" onclick="nextSlide()">Next ➔</button>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: Single Life Agreement -->
+      <div class="slide">
+        <div class="card funny-card">
+          <div class="card-header">
+            <span class="icon">😹</span>
+            <h2>Our Single Life Agreement</h2>
+          </div>
+          <div class="card-body">
+            <p>Aas-paas ke sabhi logon ki love stories shuru hokar khatam bhi ho jayegi, par <b>Hum Dono</b> ka <b>Forever Single & Unfiltered Chaos</b> mode hamesha ON rahega! 😭🔥</p>
+            <p class="quote">"Jab tak hum saath hain, kisi teesre ki zaroorat hi nahi hai hamare dimaag ka dahi karne ke liye!" 🥂🎉</p>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="nav-btn prev-btn" onclick="prevSlide()">⬅ Back</button>
+          <button class="nav-btn next-btn" onclick="nextSlide()">Go to Quiz ➔</button>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: Interactive Bestie Quiz -->
+      <div class="slide">
+        <div class="card quiz-card">
+          <div class="card-header">
+            <span class="icon">🎮</span>
+            <h2>Bestie Truth Quiz</h2>
+          </div>
+
+          <!-- Q1 -->
+          <div class="q-block">
+            <p class="question">1. Sabse bada dramebaaz kaun hai?</p>
+            <div class="q-btns">
+              <button class="btn-opt" onclick="answerQ1('elisha')">Elisha 🤪</button>
+              <button class="btn-opt" onclick="answerQ1('avin')">Avin 😇</button>
+            </div>
+            <p class="q-res" id="resQ1"></p>
+          </div>
+
+          <!-- Q2 -->
+          <div class="q-block">
+            <p class="question">2. 2 ghante tak bakwaas kaun kar sakta hai?</p>
+            <div class="q-btns">
+              <button class="btn-opt" onclick="answerQ2('elisha')">Elisha Non-Stop 🗣️</button>
+              <button class="btn-opt" onclick="answerQ2('both')">Hum Dono Milkar 💥</button>
+            </div>
+            <p class="q-res" id="resQ2"></p>
+          </div>
+
+          <!-- Q3 -->
+          <div class="q-block">
+            <p class="question">3. Raat ko 2 baje random craving/gossip plan kiska hota hai?</p>
+            <div class="q-btns">
+              <button class="btn-opt" onclick="answerQ3('elisha')">Elisha Ka 🍕</button>
+              <button class="btn-opt" onclick="answerQ3('avin')">Avin Ka 🍟</button>
+            </div>
+            <p class="q-res" id="resQ3"></p>
+          </div>
+
+          <!-- Q4 -->
+          <div class="q-block">
+            <p class="question">4. Mood off hone par sabse zyaada overthink kaun karta hai?</p>
+            <div class="q-btns">
+              <button class="btn-opt" onclick="answerQ4('elisha')">Elisha Pro Max 🤯</button>
+              <button class="btn-opt" onclick="answerQ4('avin')">Avin Mastermind 🧠</button>
+            </div>
+            <p class="q-res" id="resQ4"></p>
+          </div>
+
+        </div>
+
+        <div class="nav-controls">
+          <button class="nav-btn prev-btn" onclick="prevSlide()">⬅ Back</button>
+          <button class="nav-btn next-btn" onclick="nextSlide()">Final Note ➔</button>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: Emotional Note -->
+      <div class="slide">
+        <div class="card emotional-card">
+          <div class="card-header">
+            <span class="icon">💌</span>
+            <h2>A Little Note From Avin</h2>
+          </div>
+          <div class="card-body">
+            <p>Hey Elisha,</p>
+            <p>Mazaak aur paagalpanti apni jagah hai, par sach ye hai ki mere liye tumhari friendship bohot zyaada special hai. Zindagi me bohot se log aate hain aur jaate hain, lekin tum jaise genuine aur caring dost milna bohot mushkil hota hai.</p>
+            <p>Meri har bakwaas baat bina judge kiye sunne ke liye, meri har paagalpanti me mera saath dene ke liye, aur jab bhi zaroorat ho hamesha ek sachhe dost ki tarah khade rehne ke liye... <b>Thank You So Much!</b></p>
+            <p>I hope hamari ye friendship hamesha aisi hi rahe—waisi hi crazy, waisi hi bina kisi filter ke. Always stay smiling!</p>
+            <p class="sign">Happy Friendship Day! 🥂💜<br><b>— Avin</b></p>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="nav-btn prev-btn" onclick="prevSlide()">⬅ Back</button>
+          <button class="nav-btn next-btn" onclick="goToSlide(0)">Replay 🔄</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
